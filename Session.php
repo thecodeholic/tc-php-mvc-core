@@ -5,14 +5,14 @@
  * Time: 11:18 PM
  */
 
-namespace app\core;
+namespace thecodeholic\phpmvc;
 
 
 /**
  * Class Session
  *
  * @author  Zura Sekhniashvili <zurasekhniashvili@gmail.com>
- * @package app\core
+ * @package thecodeholic\phpmvc
  */
 class Session
 {

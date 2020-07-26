@@ -5,14 +5,14 @@
  * Time: 3:49 PM
  */
 
-namespace app\core\form;
+namespace thecodeholic\phpmvc\form;
 
 
 /**
  * Class TextareaField
  *
  * @author  Zura Sekhniashvili <zurasekhniashvili@gmail.com>
- * @package app\core\form
+ * @package thecodeholic\phpmvc\form
  */
 class TextareaField extends BaseField
 {

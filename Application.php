@@ -5,9 +5,9 @@
  * Time: 9:57 AM
  */
 
-namespace app\core;
+namespace thecodeholic\phpmvc;
 
-use app\core\db\Database;
+use thecodeholic\phpmvc\db\Database;
 
 /**
  * Class Application

@@ -5,16 +5,16 @@
  * Time: 9:19 AM
  */
 
-namespace app\core\db;
+namespace thecodeholic\phpmvc\db;
 
-use app\core\Application;
-use app\core\Model;
+use thecodeholic\phpmvc\Application;
+use thecodeholic\phpmvc\Model;
 
 /**
  * Class DbModel
  *
  * @author  Zura Sekhniashvili <zurasekhniashvili@gmail.com>
- * @package app\core
+ * @package thecodeholic\phpmvc
  */
 abstract class DbModel extends Model
 {

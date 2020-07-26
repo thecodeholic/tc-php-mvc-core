@@ -6,5 +6,10 @@
             "email": "zurasekhniashvili@gmail.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "thecodeholic\\phpmvc\\": "."
+        }
+    }
 }

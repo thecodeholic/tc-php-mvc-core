@@ -5,16 +5,16 @@
  * Time: 3:49 PM
  */
 
-namespace app\core\form;
+namespace thecodeholic\phpmvc\form;
 
 
-use app\core\Model;
+use thecodeholic\phpmvc\Model;
 
 /**
  * Class BaseField
  *
  * @author  Zura Sekhniashvili <zurasekhniashvili@gmail.com>
- * @package app\core\form
+ * @package thecodeholic\phpmvc\form
  */
 abstract class BaseField
 {
@@ -26,7 +26,7 @@ abstract class BaseField
     /**
      * Field constructor.
      *
-     * @param \app\core\Model $model
+     * @param \thecodeholic\phpmvc\Model $model
      * @param string          $attribute
      */
     public function __construct(Model $model, string $attribute)

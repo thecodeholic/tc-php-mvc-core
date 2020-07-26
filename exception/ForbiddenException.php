@@ -5,16 +5,16 @@
  * Time: 11:35 AM
  */
 
-namespace app\core\exception;
+namespace thecodeholic\phpmvc\exception;
 
 
-use app\core\Application;
+use thecodeholic\phpmvc\Application;
 
 /**
  * Class ForbiddenException
  *
  * @author  Zura Sekhniashvili <zurasekhniashvili@gmail.com>
- * @package app\core\exception
+ * @package thecodeholic\phpmvc\exception
  */
 class ForbiddenException extends \Exception
 {
