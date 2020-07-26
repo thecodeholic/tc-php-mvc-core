@@ -9,7 +9,7 @@
     "require": {},
     "autoload": {
         "psr-4": {
-            "thecodeholic\\phpmvc": "."
+            "thecodeholic\\phpmvc\\": "."
         }
     }
 }
