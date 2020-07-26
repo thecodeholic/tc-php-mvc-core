@@ -17,6 +17,11 @@ use app\core\db\Database;
  */
 class Application
 {
+    const EVENT_BEFORE_REQUEST = 'beforeRequest';
+    const EVENT_AFTER_REQUEST = 'afterRequest';
+
+    protected array $eventListeners = [];
+
     public static Application $app;
     public static string $ROOT_DIR;
     public string $userClass;
@@ -73,6 +78,7 @@ class Application
 
     public function run()
     {
+        $this->triggerEvent(self::EVENT_BEFORE_REQUEST);
         try {
             echo $this->router->resolve();
         } catch (\Exception $e) {
@@ -80,5 +86,18 @@ class Application
                 'exception' => $e,
             ]);
         }
+    }
+
+    public function triggerEvent($eventName)
+    {
+        $callbacks = $this->eventListeners[$eventName] ?? [];
+        foreach ($callbacks as $callback) {
+            call_user_func($callback);
+        }
+    }
+
+    public function on($eventName, $callback)
+    {
+        $this->eventListeners[$eventName][] = $callback;
     }
 }
