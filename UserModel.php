@@ -5,15 +5,15 @@
  * Time: 10:13 AM
  */
 
-namespace app\core;
+namespace thecodeholic\phpmvc;
 
-use app\core\db\DbModel;
+use thecodeholic\phpmvc\db\DbModel;
 
 /**
  * Class UserModel
  *
  * @author  Zura Sekhniashvili <zurasekhniashvili@gmail.com>
- * @package app\core
+ * @package thecodeholic\phpmvc
  */
 abstract class UserModel extends DbModel
 {

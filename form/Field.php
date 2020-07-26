@@ -5,10 +5,10 @@
  * Time: 7:05 AM
  */
 
-namespace app\core\form;
+namespace thecodeholic\phpmvc\form;
 
 
-use app\core\Model;
+use thecodeholic\phpmvc\Model;
 
 /**
  * Class Field
@@ -25,7 +25,7 @@ class Field extends BaseField
     /**
      * Field constructor.
      *
-     * @param \app\core\Model $model
+     * @param \thecodeholic\phpmvc\Model $model
      * @param string          $attribute
      */
     public function __construct(Model $model, string $attribute)

@@ -5,9 +5,9 @@
  * Time: 10:01 AM
  */
 
-namespace app\core;
+namespace thecodeholic\phpmvc;
 
-use app\core\exception\NotFoundException;
+use thecodeholic\phpmvc\exception\NotFoundException;
 
 /**
  * Class Router
@@ -50,7 +50,7 @@ class Router
         }
         if (is_array($callback)) {
             /**
-             * @var $controller \app\core\Controller
+             * @var $controller \thecodeholic\phpmvc\Controller
              */
             $controller = new $callback[0];
             $controller->action = $callback[1];

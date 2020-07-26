@@ -5,14 +5,14 @@
  * Time: 11:43 AM
  */
 
-namespace app\core\exception;
+namespace thecodeholic\phpmvc\exception;
 
 
 /**
  * Class NotFoundException
  *
  * @author  Zura Sekhniashvili <zurasekhniashvili@gmail.com>
- * @package app\core\exception
+ * @package thecodeholic\phpmvc\exception
  */
 class NotFoundException extends \Exception
 {

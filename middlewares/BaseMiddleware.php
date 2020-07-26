@@ -5,14 +5,14 @@
  * Time: 11:33 AM
  */
 
-namespace app\core\middlewares;
+namespace thecodeholic\phpmvc\middlewares;
 
 
 /**
  * Class BaseMiddleware
  *
  * @author  Zura Sekhniashvili <zurasekhniashvili@gmail.com>
- * @package app\core
+ * @package thecodeholic\phpmvc
  */
 abstract class BaseMiddleware
 {
