@@ -25,4 +25,16 @@ class Response
     {
         header("Location: $url");
     }
+    
+    /**
+	 * Return json
+	 *
+	 * @param array $obj The associative array to return as json
+	 * @param integer $flags see https://www.php.net/manual/en/function.json-encode.php for different flags
+	 * @param integer $depth Set the maximum depth. Must be greater than zero.
+	 * @return string
+	 */
+	public function json(array $obj, int $flags = 0, int $depth = 512) {
+		return json_encode($obj, $flags, $depth);
+	}
 }
