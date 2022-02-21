@@ -8,6 +8,8 @@
 namespace thecodeholic\phpmvc;
 
 
+use thecodeholic\phpmvc\exception\NotFoundException;
+
 /**
  * Class Request
  *
@@ -16,6 +18,8 @@ namespace thecodeholic\phpmvc;
  */
 class Request
 {
+    private array $routeParams = [];
+
     public function getMethod()
     {
         return strtolower($_SERVER['REQUEST_METHOD']);
@@ -48,6 +52,7 @@ class Request
             foreach ($_GET as $key => $value) {
                 $data[$key] = filter_input(INPUT_GET, $key, FILTER_SANITIZE_SPECIAL_CHARS);
             }
+            $data += $this->routeParams;
         }
         if ($this->isPost()) {
             foreach ($_POST as $key => $value) {
@@ -55,5 +60,15 @@ class Request
             }
         }
         return $data;
+    }
+
+    /**
+     * @param $params
+     * @return self
+     */
+    public function setRouteParams($params)
+    {
+        $this->routeParams = $params;
+        return $this;
     }
 }
