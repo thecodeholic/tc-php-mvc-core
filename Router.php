@@ -43,7 +43,75 @@ class Router
         $url = $this->request->getUrl();
         $callback = $this->routeMap[$method][$url] ?? false;
         if (!$callback) {
-            throw new NotFoundException();
+
+            // Trim slashes
+            $url = trim($url, '/');
+
+            // Get all routes for current request method
+            $routes = $this->routeMap[$method];
+
+            $routeParams = false;
+
+            // Start iterating registed routes
+            foreach ($routes as $route => $callback) {
+                // Trim slashes
+                $route = trim($route, '/');
+                $routeNames = [];
+
+                if (!$route) {
+                    continue;
+                }
+
+                // Find all route names from route and save in $routeNames
+                if (preg_match_all('/\{(\w+)}/', $route, $matches)) {
+                    $routeNames = $matches[1];
+//                    echo '<pre>';
+//                    var_dump("HAS URL PARAMS ", $routeNames);
+//                    echo '</pre>';
+                }
+
+                // Convert route name into regex pattern
+                $routeRegex = "@^" . preg_replace('/\{\w+}/', '(\w+)', $route) . "$@";
+
+//                $routeNames = [];
+//                foreach ($parts as &$part) {
+//                    if (preg_match('/^\{(\w+)}$/', $part, $matches)) {
+//                        $part = '(\w+)';
+//
+//                        $routeNames = $matches;
+//                        echo '<pre>';
+//                        var_dump("URLs with params ". $route, $routeNames);
+//                        echo '</pre>';
+////                        echo '<pre>';
+////                        var_dump("Match ", $parts);
+////                        echo '</pre>';
+//                    }
+//                }
+
+//                $newRoute = str_replace('/', '\/', $newRoute);
+
+                // Test and match current route against $routeRegex
+                if (preg_match_all($routeRegex, $url, $valueMatches)) {
+//                    echo '<pre>';
+//                    var_dump("Match ", $routeRegex, $valueMatches);
+//                    echo '</pre>';
+                    $values = [];
+                    for ($i = 1; $i < count($valueMatches); $i++) {
+                        $values[] = $valueMatches[$i][0];
+                    }
+                    $routeParams = array_combine($routeNames, $values);
+                    break;
+                }
+            }
+
+            if ($routeParams === false) {
+                throw new NotFoundException();
+            }
+
+
+            echo '<pre>';
+            var_dump($routeParams);
+            echo '</pre>';
         }
         if (is_string($callback)) {
             return $this->renderView($callback);
