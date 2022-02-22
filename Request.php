@@ -7,9 +7,6 @@
 
 namespace thecodeholic\phpmvc;
 
-
-use thecodeholic\phpmvc\exception\NotFoundException;
-
 /**
  * Class Request
  *
