@@ -68,12 +68,12 @@ class Router
             }
 
             // Find all route names from route and save in $routeNames
-            if (preg_match_all('/\{(\w+)}/', $route, $matches)) {
+            if (preg_match_all('/\{(\w+)(:[^}]+)?}/', $route, $matches)) {
                 $routeNames = $matches[1];
             }
 
             // Convert route name into regex pattern
-            $routeRegex = "@^" . preg_replace('/\{\w+}/', '(\w+)', $route) . "$@";
+            $routeRegex = "@^" . preg_replace_callback('/\{\w+(:([^}]+))?}/', fn($m) => isset($m[2]) ? "({$m[2]})" : '(\w+)', $route) . "$@";
 
             // Test and match current route against $routeRegex
             if (preg_match_all($routeRegex, $url, $valueMatches)) {
@@ -88,7 +88,7 @@ class Router
             }
         }
 
-        return null;
+        return false;
     }
 
     public function resolve()

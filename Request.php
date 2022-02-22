@@ -52,7 +52,6 @@ class Request
             foreach ($_GET as $key => $value) {
                 $data[$key] = filter_input(INPUT_GET, $key, FILTER_SANITIZE_SPECIAL_CHARS);
             }
-            $data += $this->routeParams;
         }
         if ($this->isPost()) {
             foreach ($_POST as $key => $value) {
@@ -70,5 +69,15 @@ class Request
     {
         $this->routeParams = $params;
         return $this;
+    }
+
+    public function getRouteParams()
+    {
+        return $this->routeParams;
+    }
+
+    public function getRouteParam($param, $default = null)
+    {
+        return $this->routeParams[$param] ?? $default;
     }
 }
