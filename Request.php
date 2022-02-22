@@ -7,7 +7,6 @@
 
 namespace thecodeholic\phpmvc;
 
-
 /**
  * Class Request
  *
@@ -16,6 +15,8 @@ namespace thecodeholic\phpmvc;
  */
 class Request
 {
+    private array $routeParams = [];
+
     public function getMethod()
     {
         return strtolower($_SERVER['REQUEST_METHOD']);
@@ -55,5 +56,25 @@ class Request
             }
         }
         return $data;
+    }
+
+    /**
+     * @param $params
+     * @return self
+     */
+    public function setRouteParams($params)
+    {
+        $this->routeParams = $params;
+        return $this;
+    }
+
+    public function getRouteParams()
+    {
+        return $this->routeParams;
+    }
+
+    public function getRouteParam($param, $default = null)
+    {
+        return $this->routeParams[$param] ?? $default;
     }
 }
