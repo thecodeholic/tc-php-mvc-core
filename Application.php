@@ -63,7 +63,8 @@ class Application
     public function login(UserModel $user)
     {
         $this->user = $user;
-        $primaryKey = $user->primaryKey();
+        $className = get_class($user);
+        $primaryKey = $className::primaryKey();
         $value = $user->{$primaryKey};
         Application::$app->session->set('user', $value);
 
