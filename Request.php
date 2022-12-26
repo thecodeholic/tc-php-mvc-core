@@ -1,4 +1,5 @@
 <?php
+
 /**
  * User: TheCodeholic
  * Date: 7/7/2020
@@ -76,5 +77,16 @@ class Request
     public function getRouteParam($param, $default = null)
     {
         return $this->routeParams[$param] ?? $default;
+    }
+    /**
+     * @return object
+     */
+    public function getQueryString()
+    {
+        // get the full url with query string
+        $url  = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        $parts = parse_url($url);
+        parse_str($parts['query'], $query);
+        return json_decode(json_encode($query), FALSE); // return query string as object
     }
 }
